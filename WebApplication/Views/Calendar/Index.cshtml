@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "IT Destek Ajandası";
+    Layout = "_Layout";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+
+<style>
+    /* Takvimi Proje Temasına Uyarlıyoruz */
+    .fc {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.08);
+        border: none;
+    }
+
+    /* Takvim Başlık ve Buton Renkleri */
+    .fc-header-toolbar {
+        margin-bottom: 2em !important;
+    }
+
+    .fc-button-primary {
+        background-color: #1a1d20 !important;
+        border-color: #1a1d20 !important;
+        text-transform: uppercase;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px;
+    }
+
+        .fc-button-primary:hover {
+            background-color: #0dcaf0 !important;
+            border-color: #0dcaf0 !important;
+            color: #1a1d20 !important;
+        }
+
+    .fc-button-active {
+        background-color: #0d6efd !important;
+        border-color: #0d6efd !important;
+    }
+
+    /* Gün Numaraları ve Yazı Tipleri */
+    .fc-daygrid-day-number {
+        color: #1a1d20;
+        font-weight: 700;
+        text-decoration: none !important;
+        padding: 8px !important;
+    }
+
+    .fc-col-header-cell-cushion {
+        color: #6c757d;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-decoration: none !important;
+        letter-spacing: 1px;
+    }
+</style>
+
+<div class="container-fluid pt-4 px-4">
+    @* Border rengini sidebar footer rengi (#1a1d20) yaptık ve kalınlığı 12px'e çektik *@
+    <div class="bg-white rounded p-4 shadow-sm border-top" style="border-top: 12px solid #1a1d20 !important;">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <h5 class="mb-0 fw-bold text-dark">
+                    <i class="bi bi-calendar-check-fill me-2 text-info"></i> IT DESTEK AJANDASI
+                </h5>
+                <small class="text-muted text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 1px;">Kurumsal Planlama Takvimi</small>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-dark text-info px-3 py-2 fw-bold">
+                    <i class="bi bi-cpu-fill me-1"></i> SİSTEM AKTİF
+                </span>
+            </div>
+        </div>
+
+        <div id="calendar"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/tr.global.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'tr',
+                firstDay: 1,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                },
+                buttonText: {
+                    today: 'Bugün'
+                },
+                events: []
+            });
+            calendar.render();
+        });
+    </script>
+}

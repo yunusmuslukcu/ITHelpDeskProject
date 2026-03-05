@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/BusinessLayer/">
+    <Project Path="Business/Business.csproj" />
+  </Folder>
+  <Folder Name="/DataAccessLayer/">
+    <Project Path="DataAccess/DataAccess.csproj" />
+  </Folder>
+  <Folder Name="/DtoLayer/">
+    <Project Path="Dto/Dto.csproj" />
+  </Folder>
+  <Folder Name="/EntityLayer/">
+    <Project Path="Entity/Entity.csproj" />
+  </Folder>
+  <Folder Name="/WebUI/">
+    <Project Path="WebApplication/WebApplication.csproj" />
+  </Folder>
+</Solution>

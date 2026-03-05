@@ -1,0 +1,81 @@
+﻿@model Dto.UserDtos.UserLoginDto
+
+@{
+    Layout = null; // Giriş sayfası bağımsız bir sayfa olmalı
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giriş Yap | IT Destek</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #1a1a1a; /* Dashboard sidebar rengine yakın bir koyu ton */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-card {
+            background-color: #252525; /* Dashboard kart yapınla uyumlu */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+        .btn-it-destek {
+            background-color: #00bcd4; /* Dashboard'undaki turkuaz buton rengi */
+            color: black;
+            font-weight: bold;
+            border: none;
+        }
+        .btn-it-destek:hover {
+            background-color: #00acc1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <h4 class="text-info"><i class="fas fa-microchip"></i> IT DESTEK</h4>
+            <p class="text-muted">Sisteme erişmek için giriş yapın!</p>
+        </div>
+
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label small">Kullanıcı Adı</label>
+                <input asp-for="UserName" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Kullanıcı adınızı girin..." />
+                <span asp-validation-for="UserName" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label small">Şifre</label>
+                <input asp-for="Password" type="password" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="********" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label small text-muted">Beni Hatırla</label>
+            </div>
+
+            <button type="submit" class="btn btn-it-destek w-100 mb-3">GİRİŞ YAP</button>
+
+            <div class="text-center">
+                <p class="small text-muted">Hesabın yok mu? <a asp-action="Register" class="text-info text-decoration-none">Kayıt Ol</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

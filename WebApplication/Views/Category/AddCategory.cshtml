@@ -1,0 +1,78 @@
+﻿@using Dto.CategoryDtos
+@model CategoryCreateDto
+@{
+    ViewData["Title"] = "Yeni Kategori";
+}
+
+<div class="container-fluid pt-4 px-4">
+    @* Sayfa Başlığı - Tam Ortalı *@
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-10">
+           
+
+            @* Ana Kart Yapısı *@
+            <div class="card shadow-sm border-0 mb-3">
+                @* Header: Diğer sayfalarla tam uyumlu *@
+                <div class="card-header bg-dark py-3">
+                    <span class="text-secondary fw-bolder text-uppercase" style="letter-spacing: 1.5px; font-size: 0.9rem;">
+                        <i class="bi bi-plus-circle-fill me-2 text-info"></i> KATEGORİ EKLEME
+                    </span>
+                </div>
+
+                <div class="card-body p-4 bg-white">
+                    <form method="post">
+                        @* Kategori Adı *@
+                        <div class="mb-4">
+                            <label asp-for="CategoryName" class="form-label fw-bold text-muted small text-uppercase">Kategori Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-secondary">
+                                    <i class="bi bi-tag-fill"></i>
+                                </span>
+                                <input type="text" asp-for="CategoryName" class="form-control border-start-0 ps-0 shadow-none"
+                                       placeholder="Örn: Yazılım Hataları" required />
+                            </div>
+                            <span asp-validation-for="CategoryName" class="text-danger small"></span>
+                        </div>
+
+                        @* Açıklama *@
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label fw-bold text-muted small text-uppercase">Kategori Açıklaması</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-secondary align-items-start pt-2">
+                                    <i class="bi bi-chat-left-text-fill"></i>
+                                </span>
+                                <textarea asp-for="Description" class="form-control border-start-0 ps-0 shadow-none"
+                                          rows="4" placeholder="Bu kategori hangi tür talepleri kapsıyor?"></textarea>
+                            </div>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <hr class="text-muted opacity-25">
+
+                        @* Butonlar *@
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="/Category/Index" class="btn btn-outline-secondary fw-bold px-4 border-2">
+                                <i class="bi bi-arrow-left me-1"></i> Vazgeç
+                            </a>
+                            <button type="submit" class="btn btn-info fw-bold px-5 shadow-sm text-dark">
+                                <i class="bi bi-save-fill me-1"></i> Kategoriyi Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @* İpucu Alanı: O sevdiğin açık mavi (alert-info) *@
+            <div class="alert alert-info border-0 shadow-sm p-3 d-flex align-items-center">
+                <i class="bi bi-lightbulb-fill fs-4 me-3"></i>
+                <div class="small">
+                    <strong>Bilgi:</strong> Yeni bir kategori eklediğinizde, kullanıcılar destek talebi oluştururken bu kategoriyi hemen seçmeye başlayabilirler.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

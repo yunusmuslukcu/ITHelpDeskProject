@@ -1,0 +1,80 @@
+﻿@using Dto.CategoryDtos
+@model CategoryUpdateDto
+@{
+    ViewData["Title"] = "Kategori Düzenle";
+}
+
+<div class="container-fluid pt-4 px-4">
+    @* Sayfa Başlığı - Kartla aynı hizada olması için sütun içine de alınabilir veya ortalanabilir *@
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-10">
+           
+
+            @* Ana Kart Yapısı *@
+            <div class="card shadow-sm border-0 mb-3">
+                @* Header *@
+                <div class="card-header bg-dark py-3">
+                    <span class="text-secondary fw-bolder text-uppercase" style="letter-spacing: 1.5px; font-size: 0.9rem;">
+                        <i class="bi bi-pencil-square me-2 text-info"></i> KATEGORİ BİLGİLERİ
+                    </span>
+                </div>
+
+                <div class="card-body p-4 bg-white">
+                    <form method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        @* Kategori Adı *@
+                        <div class="mb-4">
+                            <label asp-for="CategoryName" class="form-label fw-bold text-muted small text-uppercase">Kategori Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-secondary">
+                                    <i class="bi bi-tag-fill"></i>
+                                </span>
+                                <input type="text" asp-for="CategoryName" class="form-control border-start-0 ps-0 shadow-none"
+                                       placeholder="Örn: Donanım Sorunları" required />
+                            </div>
+                            <span asp-validation-for="CategoryName" class="text-danger small"></span>
+                        </div>
+
+                        @* Açıklama *@
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label fw-bold text-muted small text-uppercase">Açıklama</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-secondary align-items-start pt-2">
+                                    <i class="bi bi-chat-left-text-fill"></i>
+                                </span>
+                                <textarea asp-for="Description" class="form-control border-start-0 ps-0 shadow-none"
+                                          rows="4" placeholder="Kategori içeriği hakkında kısa bilgi..."></textarea>
+                            </div>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <hr class="text-muted opacity-25">
+
+                        @* Butonlar *@
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="/Category/Index" class="btn btn-outline-secondary fw-bold px-4 border-2">
+                                <i class="bi bi-arrow-left me-1"></i> Geri Dön
+                            </a>
+                            <button type="submit" class="btn btn-info fw-bold px-5 shadow-sm text-dark">
+                                <i class="bi bi-check-lg me-1"></i> Değişiklikleri Uygula
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @* İpucu Alanı: O sevdiğin açık mavi (alert-info) geri döndü *@
+            <div class="alert alert-info border-0 shadow-sm p-3 d-flex align-items-center">
+                <i class="bi bi-lightbulb-fill fs-4 me-3"></i>
+                <div class="small">
+                    <strong>Uyarı!</strong> Kategori adını güncellediğinizde bu kategoriye bağlı tüm eski taleplerin de güncellenmiş isimle görüneceğini unutmayın.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
