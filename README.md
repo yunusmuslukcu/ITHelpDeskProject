@@ -13,12 +13,12 @@ MS SQL Server
 Razor View Engine
 
 Mimari=
-ITHelpDesk/
-├── Entity/         # Varlık sınıfları (Ticket, Category, AppUser, AppRole)
-├── DataAccess/     # EF Core context, repository ve migration'lar
-├── Business/       # Servis katmanı, generic arayüzler
-├── Dto/            # Veri transfer nesneleri (TicketCreateDto, TicketListDto vb.)
-└── WebApplication/ # Controller'lar, View'lar, Program.cs
+ITHelpDesk
+─ Entity             Varlık sınıfları (Ticket, Category, AppUser, AppRole)
+─ DataAccess         EF Core context, repository ve migration'lar
+─ Business           Servis katmanı, generic arayüzler
+─ Dto                Veri transfer nesneleri (TicketCreateDto, TicketListDto vb.)
+─ WebApplication     Controller'lar, View'lar, Program.cs
 
 Öne Çıkan Özellikler
 Cookie tabanlı kimlik doğrulama ve [Authorize] attribute'larıyla rol bazlı yetkilendirme
